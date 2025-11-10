@@ -1,6 +1,8 @@
 # AI Sponsorship Checker
 
-![AI Sponsorship Checker Logo](icons/icon128.png)
+<div align="center">
+  <img src="icons/icon128.png" alt="AI Sponsorship Checker Logo" width="128">
+</div>
 
 The **AI Sponsorship Checker** is a powerful Chrome extension designed to help job seekers quickly identify visa sponsorship information within job descriptions. Leveraging the Google Gemini AI, this tool scans job postings, provides a clear verdict on sponsorship availability, and highlights relevant keywords directly on the page.
 
