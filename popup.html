@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Sponsorship Checker</title>
+    <style>
+        body { font-family: Inter, sans-serif; padding: 15px; width: 300px; background-color: #f7f9fb; }
+        h3 { color: #cc3333; margin-top: 0; }
+        .config-section {
+            border: 1px solid #e5e7eb;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        input[type="text"] {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: white;
+        }
+        button {
+            width: 100%; padding: 10px; color: white; border: none; border-radius: 8px;
+            cursor: pointer; font-size: 14px; transition: background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+        .check-button { background-color: #ef4444; }
+        .check-button:hover { background-color: #dc2626; }
+        .save-button { background-color: #10b981; }
+        .save-button:hover { background-color: #059669; }
+        .message { margin-top: 10px; padding: 10px; border-radius: 4px; text-align: center; }
+        .loading { background-color: #fef3c7; color: #92400e; display: none; }
+        .success { background-color: #d1fae5; color: #065f46; display: none; }
+        .error { background-color: #fee2e2; color: #991b1b; display: none; }
+        .key-status-ok { color: #065f46; font-weight: bold; }
+        .key-status-missing { color: #991b1b; }
+
+        /* Styles for Sponsorship Status */
+        #sponsorshipResult {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: left;
+            border: 2px solid;
+            display: none;
+        }
+        .status-no { border-color: #991b1b; background-color: #fee2e2; }
+        .status-yes { border-color: #065f46; background-color: #d1fae5; }
+        .status-uncertain { border-color: #92400e; background-color: #fef3c7; }
+
+    </style>
+</head>
+<body>
+<h3>AI Sponsorship Checker</h3>
+
+<!-- API Key Configuration Section -->
+<div class="config-section">
+    <strong>1. Gemini API Key Setup</strong>
+    <p style="font-size: 12px; margin: 5px 0 10px 0;">
+        Status: <span id="keyStatus" class="key-status-missing">Missing</span>
+    </p>
+    <input type="text" id="apiKeyInput" placeholder="Paste your Gemini API Key" />
+    <button id="saveKeyButton" class="save-button">Save Key</button>
+    <div id="keyMessage" class="message success" style="display: none;">Key Saved!</div>
+</div>
+
+<!-- Proactive Check Section -->
+<div style="margin-top: 20px;">
+    <strong>2. Analyze Page</strong>
+    <button id="sponsorshipButton" class="check-button">Analyze & Highlight Keywords</button>
+
+    <div id="loadingMessage" class="message loading">Scanning and analyzing page...</div>
+
+    <div id="sponsorshipResult" style="display: none;">
+        <p><strong>Verdict:</strong> <span id="sponsorshipVerdict"></span></p>
+        <p style="font-size: 12px; margin-top: 5px;">
+            Keywords highlighted on page.
+        </p>
+    </div>
+</div>
+
+<div id="errorMessage" class="message error"></div>
+
+<script src="popup.js"></script>
+</body>
+</html>
